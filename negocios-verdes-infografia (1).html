@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Negocios Verdes en Cundinamarca: de las abejas al consumidor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #F0F4E8;
+  --bg-2: #E2EAD3;
+  --ink: #15271C;
+  --muted: #4A5F51;
+  --honey: #E9A50C;
+  --honey-soft: #F9E4A0;
+  --on-honey: #1A1405;
+  --leaf: #2C6A44;
+  --leaf-soft: #C9DDBE;
+  --wood: #8A5E34;
+  --wood-dark: #5E3D1F;
+  --line: rgba(21,39,28,.16);
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Newsreader", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1911;
+    --bg-2: #16261B;
+    --ink: #EAF1E2;
+    --muted: #A3B7A8;
+    --honey: #F2B72B;
+    --honey-soft: #5A4610;
+    --on-honey: #1A1405;
+    --leaf: #7DBE93;
+    --leaf-soft: #23402F;
+    --wood: #B98555;
+    --wood-dark: #8A5E34;
+    --line: rgba(234,241,226,.18);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1911;
+  --bg-2: #16261B;
+  --ink: #EAF1E2;
+  --muted: #A3B7A8;
+  --honey: #F2B72B;
+  --honey-soft: #5A4610;
+  --on-honey: #1A1405;
+  --leaf: #7DBE93;
+  --leaf-soft: #23402F;
+  --wood: #B98555;
+  --wood-dark: #8A5E34;
+  --line: rgba(234,241,226,.18);
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 22px; }
+section { padding: 72px 0; }
+:focus-visible { outline: 3px solid var(--honey); outline-offset: 3px; border-radius: 4px; }
+
+/* Hero */
+.hero { padding: 56px 0 40px; position: relative; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.3fr .7fr; gap: 24px; align-items: center; }
+.hero h1 { font-size: clamp(2.4rem, 7vw, 4.6rem); font-weight: 800; }
+.hero .lead { margin-top: 22px; max-width: 34em; color: var(--muted); font-size: 1.25rem; }
+.cluster { position: relative; width: 100%; aspect-ratio: 1 / 1; max-width: 300px; justify-self: end; }
+.cluster i {
+  position: absolute; width: 34%; aspect-ratio: 1 / 1.1547;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: var(--leaf-soft);
+}
+.cluster i.on { background: var(--honey); }
+.cluster i.mid { background: var(--leaf); opacity: .85; }
+
+/* Section heads */
+.head { max-width: 640px; margin-bottom: 36px; }
+.head h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 700; }
+.head p { margin-top: 12px; color: var(--muted); }
+
+/* Stats */
+.band { background: var(--bg-2); }
+.hexrow { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 10px; padding-bottom: 46px; }
+.hexwrap { transition: filter .15s; }
+.hexwrap:nth-child(even) { transform: translateY(46px); }
+.hexwrap:has(:focus-visible) {
+  filter: drop-shadow(3px 0 0 var(--ink)) drop-shadow(-3px 0 0 var(--ink)) drop-shadow(0 3px 0 var(--ink)) drop-shadow(0 -3px 0 var(--ink));
+}
+.hex {
+  width: 172px; height: 198px; border: 0; cursor: pointer;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: var(--leaf-soft); color: var(--ink);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  font-family: var(--display); padding: 0 24px; text-align: center;
+  transition: background .2s;
+}
+.hex:focus-visible { outline: none; }
+.hex .n { font-size: 2.6rem; font-weight: 800; line-height: 1; }
+.hex .u { font-family: var(--body); font-size: .95rem; line-height: 1.2; }
+.hex[aria-pressed="true"] { background: var(--honey); color: var(--on-honey); }
+.hex:hover { background: var(--honey-soft); }
+.hex[aria-pressed="true"]:hover { background: var(--honey); }
+.detail {
+  max-width: 620px; margin: 0 auto; padding: 22px 26px;
+  border-left: 6px solid var(--honey); background: var(--bg);
+  min-height: 118px;
+}
+.detail h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.detail p { color: var(--muted); }
+.channels { margin-top: 30px; text-align: center; color: var(--muted); }
+.channels b { color: var(--ink); font-weight: 500; border-bottom: 2px solid var(--honey); }
+
+/* Story */
+.story { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+.quote {
+  font-family: var(--display); font-weight: 700; font-size: clamp(1.9rem, 4.6vw, 3rem);
+  line-height: 1.08; letter-spacing: -0.02em;
+}
+.quote small { display: block; margin-top: 16px; font-family: var(--body); font-weight: 400; font-size: 1.05rem; color: var(--muted); letter-spacing: 0; }
+.facts { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.facts div { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 8.5rem 1fr; gap: 14px; }
+.facts dt { font-family: var(--display); font-weight: 700; color: var(--leaf); }
+.facts dd { margin: 0; }
+.facts { margin: 0; }
+
+/* Hive */
+.hive-sec { background: var(--bg-2); }
+.hive {
+  border: 12px solid var(--wood); border-radius: 6px 6px 10px 10px;
+  background: var(--wood-dark); padding: 10px; display: flex; gap: 5px; height: 240px;
+  box-shadow: 0 8px 0 rgba(0,0,0,.18);
+}
+.frame {
+  flex: 1; border-radius: 3px; position: relative; overflow: hidden;
+  background: var(--honey);
+  background-image:
+    radial-gradient(circle at 50% 0, rgba(255,255,255,.28) 0 6px, transparent 7px);
+  background-size: 100% 26px;
+  transition: background-color .35s, opacity .35s;
+}
+.frame.taken {
+  background-color: transparent; background-image: none;
+  border: 2px dashed rgba(255,255,255,.45);
+}
+.controls { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
+.presets { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  font: 700 .95rem var(--display); padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--ink); background: transparent; color: var(--ink);
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.slider { display: flex; align-items: center; gap: 12px; flex: 1 1 260px; }
+.slider label { font-family: var(--display); font-weight: 700; white-space: nowrap; }
+input[type=range] { flex: 1; accent-color: var(--honey); height: 28px; min-width: 120px; }
+.readout { margin-top: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 520px; }
+.readout div:only-child { grid-column: 1; }
+.readout div { padding: 14px 18px; background: var(--bg); border-radius: 4px; }
+.readout .n { font-family: var(--display); font-weight: 800; font-size: 2.4rem; line-height: 1; }
+.readout .l { color: var(--muted); font-size: 1rem; }
+.readout .stay .n { color: var(--leaf); }
+.msg { margin-top: 18px; max-width: 620px; min-height: 3.4em; }
+
+/* Steps */
+.steps { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+.step {
+  flex: 1 1 130px; text-align: left; cursor: pointer; padding: 14px 16px; border: 2px solid var(--line);
+  background: transparent; color: var(--ink); border-radius: 4px; font: 700 1rem var(--display);
+  display: flex; gap: 10px; align-items: baseline;
+}
+.step span { color: var(--muted); font-weight: 500; font-size: .9rem; }
+.step[aria-selected="true"] { border-color: var(--honey); background: var(--honey); color: var(--on-honey); }
+.step[aria-selected="true"] span { color: var(--on-honey); }
+.step-body { max-width: 640px; padding: 4px 0 4px 22px; border-left: 6px solid var(--honey); min-height: 130px; }
+.step-body h3 { font-size: 1.5rem; margin-bottom: 8px; }
+
+/* Timeline */
+.tl-sec { background: var(--bg-2); }
+.tl { list-style: none; margin: 0; padding: 0; position: relative; max-width: 640px; }
+.tl::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 3px; background: var(--leaf-soft); }
+.tl li { position: relative; padding: 0 0 26px 44px; }
+.tl li::before {
+  content: ""; position: absolute; left: 0; top: 4px; width: 25px; height: 28px;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: var(--leaf);
+}
+.tl li.last::before { background: var(--honey); }
+.tl h3 { font-size: 1.2rem; }
+.tl p { color: var(--muted); }
+
+.close { text-align: left; }
+.close p.big { font-family: var(--display); font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.15; max-width: 22em; letter-spacing: -0.015em; }
+footer { padding: 30px 0 50px; color: var(--muted); font-size: .95rem; border-top: 1px solid var(--line); }
+
+@media (max-width: 720px) {
+  section { padding: 54px 0; }
+  .hero .wrap { grid-template-columns: 1fr; }
+  .cluster { max-width: 200px; justify-self: start; order: -1; }
+  .story { grid-template-columns: 1fr; gap: 28px; }
+  .facts div { grid-template-columns: 1fr; gap: 2px; }
+  .hexwrap:nth-child(even) { transform: none; }
+  .hexrow { padding-bottom: 20px; }
+  .hive { height: 190px; border-width: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1>De las abejas al consumidor final</h1>
+      <p class="lead">Los Negocios Verdes de Cundinamarca vistos desde dos lados: las cifras que reporta la CAR y la finca de un apicultor en Suesca.</p>
+    </div>
+    <div class="cluster" aria-hidden="true">
+      <i style="left:33%;top:0" class="on"></i>
+      <i style="left:0;top:26%" class="mid"></i>
+      <i style="left:66%;top:26%"></i>
+      <i style="left:33%;top:38%"></i>
+      <i style="left:0;top:64%"></i>
+      <i style="left:66%;top:64%" class="mid"></i>
+    </div>
+  </div>
+</header>
+
+<section class="band" id="red">
+  <div class="wrap">
+    <div class="head">
+      <h2>La red de la CAR en cifras</h2>
+      <p>La Corporación Autónoma Regional de Cundinamarca acompaña este tipo de iniciativas. Toca cada celda para ver de qué habla la cifra.</p>
+    </div>
+    <div class="hexrow" role="group" aria-label="Cifras de la CAR">
+      <div class="hexwrap"><button class="hex" data-i="0" aria-pressed="true"><span class="n" data-to="140" data-pre="~">~140</span><span class="u">negocios verdes vinculados</span></button></div>
+      <div class="hexwrap"><button class="hex" data-i="1" aria-pressed="false"><span class="n" data-to="45" data-pre="~">~45</span><span class="u">eventos en tres años</span></button></div>
+      <div class="hexwrap"><button class="hex" data-i="2" aria-pressed="false"><span class="n" data-to="500" data-pre="+" data-suf=" M">+500 M</span><span class="u">pesos en ventas</span></button></div>
+      <div class="hexwrap"><button class="hex" data-i="3" aria-pressed="false"><span class="n" data-to="20" data-pre="+">+20</span><span class="u">vinculaciones comerciales</span></button></div>
+    </div>
+    <div class="detail" id="detail" aria-live="polite"></div>
+    <p class="channels">Para dar más exposición a los productos, también se han impulsado <b>tiendas especializadas</b> y <b>canales virtuales</b>.</p>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap story">
+    <p class="quote">"Las abejitas me han cambiado la vida"<small>Luis Felipe Villamil Sosa, apicultor de Suesca</small></p>
+    <dl class="facts">
+      <div><dt>Quién</dt><dd>Apicultor que pertenece a Apicun, una asociación que nació tras un proceso de capacitación promovido por la Alcaldía.</dd></div>
+      <div><dt>Qué produce</dt><dd>Miel y polen, con aprovechamiento natural de las colmenas.</dd></div>
+      <div><dt>Cómo cuida</dt><dd>No alimenta artificialmente a las abejas y deja parte de la miel en los cajones para que tengan comida.</dd></div>
+      <div><dt>Qué significó</dt><dd>Para él, la actividad terminó siendo mucho más que una fuente de ingresos.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="hive-sec" id="colmena">
+  <div class="wrap">
+    <div class="head">
+      <h2>Cuánta miel se saca y cuánta se deja</h2>
+      <p>Villamil lo explica con dos casos. Elige uno para ver cuántos cuadros quedan para las abejas.</p>
+    </div>
+    <div class="hive" id="hive" role="img" aria-label="Caja de colmena con diez cuadros"></div>
+    <div class="controls">
+      <div class="presets">
+        <button class="chip" data-case="a" aria-pressed="true">Caja de diez cuadros</button>
+        <button class="chip" data-case="b" aria-pressed="false">Caja muy llena</button>
+      </div>
+    </div>
+    <div class="readout" id="readout"></div>
+    <p class="msg" id="msg"></p>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="head">
+      <h2>El camino del frasco</h2>
+      <p>Cinco etapas, de la colmena al comprador. Elige una para ver qué pasa en ella.</p>
+    </div>
+    <div class="steps" role="tablist" aria-label="Etapas del proceso">
+      <button class="step" role="tab" aria-selected="true" data-s="0">Extracción <span>1</span></button>
+      <button class="step" role="tab" aria-selected="false" data-s="1">Filtrado <span>2</span></button>
+      <button class="step" role="tab" aria-selected="false" data-s="2">Envasado <span>3</span></button>
+      <button class="step" role="tab" aria-selected="false" data-s="3">Etiquetado <span>4</span></button>
+      <button class="step" role="tab" aria-selected="false" data-s="4">Venta <span>5</span></button>
+    </div>
+    <div class="step-body" id="stepBody" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="tl-sec" id="sello">
+  <div class="wrap">
+    <div class="head">
+      <h2>Cómo llegó al sello</h2>
+      <p>La ruta de Villamil dentro del programa de Negocios Verdes.</p>
+    </div>
+    <ol class="tl">
+      <li><h3>Capacitación de la Alcaldía</h3><p>De ese proceso nace Apicun, la asociación a la que pertenece.</p></li>
+      <li><h3>Ingreso al programa</h3><p>Entra a Negocios Verdes durante la pandemia.</p></li>
+      <li><h3>Verificación</h3><p>Su negocio pasa por un proceso de verificación.</p></li>
+      <li class="last"><h3>El sello</h3><p>Le da al cliente "más confianza, más garantía", dice él.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <p class="big">Detrás de cada etiqueta ambiental hay un proceso que depende del territorio y de los ciclos de la naturaleza.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Elaborado a partir del texto cargado sobre la CAR y los Negocios Verdes en Cundinamarca. Las cifras de la entidad son aproximadas, tal como se reportaron en el encuentro.</div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Cifras */
+  var facts = [
+    { t: "Negocios verdes vinculados", d: "Son los negocios que la CAR tiene dentro de su red de acompañamiento. La entidad habló de aproximadamente 140 en el encuentro." },
+    { t: "Eventos en tres años", d: "La CAR participó en cerca de 45 eventos durante tres años para mostrar y vender estos productos." },
+    { t: "Ventas por más de 500 millones", d: "En el periodo reportado, las ventas superaron los 500 millones de pesos." },
+    { t: "Vinculaciones comerciales", d: "La entidad contó más de 20 vinculaciones comerciales, es decir, conexiones entre negocios verdes y compradores." }
+  ];
+  var hexes = document.querySelectorAll(".hex");
+  var detail = document.getElementById("detail");
+  function showFact(i) {
+    hexes.forEach(function (h, k) { h.setAttribute("aria-pressed", k === i ? "true" : "false"); });
+    detail.innerHTML = "<h3></h3><p></p>";
+    detail.querySelector("h3").textContent = facts[i].t;
+    detail.querySelector("p").textContent = facts[i].d;
+  }
+  hexes.forEach(function (h) { h.addEventListener("click", function () { showFact(+h.dataset.i); }); });
+  showFact(0);
+
+  /* Conteo al entrar en pantalla (un solo momento animado) */
+  function countUp(el) {
+    var to = +el.dataset.to, pre = el.dataset.pre || "", suf = el.dataset.suf || "";
+    if (reduce) { el.textContent = pre + to + suf; return; }
+    var start = null, dur = 1100;
+    function tick(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + Math.round(to * e) + suf;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  var nums = document.querySelectorAll(".hex .n");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) { nums.forEach(countUp); io.disconnect(); }
+      });
+    }, { threshold: 0.4 });
+    io.observe(document.getElementById("red"));
+  }
+
+  /* Colmena */
+  var hive = document.getElementById("hive");
+  var frames = [];
+  for (var i = 0; i < 10; i++) {
+    var f = document.createElement("div");
+    f.className = "frame";
+    hive.appendChild(f);
+    frames.push(f);
+  }
+  var readout = document.getElementById("readout");
+  var msg = document.getElementById("msg");
+  var chips = document.querySelectorAll(".chip");
+  function box(n, l, cls) {
+    return '<div class="' + (cls || "") + '"><div class="n">' + n + '</div><div class="l">' + l + '</div></div>';
+  }
+  function setCase(c) {
+    chips.forEach(function (ch) { ch.setAttribute("aria-pressed", ch.dataset.case === c ? "true" : "false"); });
+    if (c === "a") {
+      frames.forEach(function (f, k) { f.classList.toggle("taken", k >= 4); });
+      readout.innerHTML = box(6, "cuadros que se sacan") + box(4, "cuadros que se dejan", "stay");
+      msg.textContent = "Si una caja tiene diez cuadros, pueden sacar seis y dejar cuatro.";
+    } else {
+      frames.forEach(function (f, k) { f.classList.toggle("taken", k >= 2); });
+      readout.innerHTML = box(2, "cuadros que se dejan", "stay");
+      msg.textContent = "Si está muy llena, dejan dos. No se puede sobreexplotar la colmena, explica Villamil.";
+    }
+  }
+  chips.forEach(function (ch) { ch.addEventListener("click", function () { setCase(ch.dataset.case); }); });
+  setCase("a");
+
+  /* Etapas */
+  var steps = [
+    { t: "Extracción", d: "La miel se saca de los cajones dejando parte para las abejas. Villamil no las alimenta de forma artificial, así que la colmena depende de lo que produce." },
+    { t: "Filtrado", d: "Después de la extracción, la miel se filtra antes de pasar al envase." },
+    { t: "Envasado", d: "La miel ya filtrada se envasa. Villamil también produce polen." },
+    { t: "Etiquetado", d: "Es el último paso en el campo. El sello de Negocios Verdes, que obtuvo tras una verificación, le sirve como respaldo frente al comprador." },
+    { t: "Venta", d: "Aquí empieza el desafío comercial. Villamil vende en mercados campesinos, ferias y otros espacios de venta directa. Su mayor dificultad no está en vender: el clima y el estado de las abejas definen buena parte de la producción." }
+  ];
+  var tabs = document.querySelectorAll(".step");
+  var body = document.getElementById("stepBody");
+  function showStep(i) {
+    tabs.forEach(function (t, k) { t.setAttribute("aria-selected", k === i ? "true" : "false"); });
+    body.innerHTML = "<h3></h3><p></p>";
+    body.querySelector("h3").textContent = steps[i].t;
+    body.querySelector("p").textContent = steps[i].d;
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { showStep(+t.dataset.s); }); });
+  showStep(0);
+})();
+</script>
+</body>
+</html>
